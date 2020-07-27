@@ -17,7 +17,7 @@ local TEXT_MAX_WIDTH = 480
 local CONTENT_PADDING = Vector2.new(22, 19)
 
 local function GetActiveTime(text)
-	return 6 -- todo: calculate based on text length
+	return 8 -- todo: calculate based on text length
 end
 
 local MessageEvent = Roact.PureComponent:extend("MessageEvent")
