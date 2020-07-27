@@ -82,6 +82,10 @@ function PermissionsPluginServer:CanPlayerRunCommand(player, commandId)
 	return self._controller:CanGroupRunCommand(groupName, commandId)
 end
 
+function PermissionsPluginServer:GetPlayerGroup(player)
+	return self._playerGroups[player]
+end
+
 function PermissionsPluginServer:SetPlayerGroup(player, groupName)
 	if player:IsDescendantOf(game) then
 		self._playerGroups[player] = groupName

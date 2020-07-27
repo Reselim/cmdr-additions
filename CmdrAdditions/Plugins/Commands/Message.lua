@@ -1,3 +1,4 @@
+local Players = game:GetService("Players")
 local TextService = game:GetService("TextService")
 
 local MessageCommand = {
@@ -14,15 +15,26 @@ local MessageCommand = {
 }
 
 function MessageCommand.RunServer(context, message)
-	local author = context.Executor
+	local filterResult = TextService:FilterStringAsync(message, context.Executor.UserId, Enum.TextFilterContext.PublicChat)
+	
+	local cmdrAdditions = context.Cmdr.CmdrAdditions
+	local permissionsPlugin = cmdrAdditions.Plugins.Permissions
 
-	context:BroadcastEvent("ShowGlobalMessage", {
-		Text = message,
-		Author = {
-			Player = author,
-			Role = "todo"
-		}
-	})
+	for _, player in pairs(Players:GetChildren()) do
+		coroutine.wrap(function()
+			local filteredMessage = filterResult:GetNonChatStringForUserAsync(player.UserId)
+			
+			context:SendEvent(player, "ShowGlobalMessage", {
+				Text = filteredMessage,
+				Author = {
+					Player = context.Executor,
+					Role = permissionsPlugin:GetPlayerGroup(context.Executor)
+				}
+			})
+		end)()
+	end
+
+	return "Sent message."
 end
 
 return MessageCommand
