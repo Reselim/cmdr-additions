@@ -1,5 +1,7 @@
 # cmdr-additions
 
+**cmdr-additions is still largely incomplete. Use with caution.**
+
 An extension for [Cmdr](https://github.com/evaera/Cmdr) that provides additional functionality you would expect from a traditional Roblox "admin commands" suite.
 
 cmdr-additions tries to be as un-intrusive as possible, allowing use alongside Cmdr in all Roblox games.
