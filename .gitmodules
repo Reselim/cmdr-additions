@@ -1,0 +1,9 @@
+[submodule "Packages/Roact"]
+	path = Packages/Roact
+	url = https://github.com/roblox/roact
+[submodule "Packages/Promise"]
+	path = Packages/Promise
+	url = https://github.com/evaera/roblox-lua-promise
+[submodule "Packages/Cmdr"]
+	path = Packages/Cmdr
+	url = https://github.com/evaera/Cmdr

@@ -1,0 +1,16 @@
+{
+	"name": "cmdr-additions",
+	"tree": {
+		"$path": "CmdrAdditions",
+
+		"Packages": {
+			"$className": "Folder",
+
+			"Roact": { "$path": "Packages/Roact" },
+			"Otter": { "$path": "Packages/Otter" },
+			"RoactOtter": { "$path": "Packages/RoactOtter" },
+			"Promise": { "$path": "Packages/Promise/lib" },
+			"Utility": { "$path": "Packages/Utility" }
+		}
+	}
+}

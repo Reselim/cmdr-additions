@@ -1,0 +1,42 @@
+{
+	"name": "cmdr-additions-demo",
+	"tree": {
+		"$className": "DataModel",
+
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+
+			"Cmdr": {
+				"$path": "Packages/Cmdr/Cmdr"
+			},
+
+			"CmdrAdditions": {
+				"$path": "default.project.json"
+			},
+
+			"Config": {
+				"$path": "Demo/Config.lua"
+			}
+		},
+
+		"ServerScriptService": {
+			"$className": "ServerScriptService",
+
+			"ServerLoader": {
+				"$path": "Demo/Loader.server.lua"
+			}
+		},
+
+		"StarterPlayer": {
+			"$className": "StarterPlayer",
+
+			"StarterPlayerScripts": {
+				"$className": "StarterPlayerScripts",
+
+				"ClientLoader": {
+					"$path": "Demo/Loader.client.lua"
+				}
+			}
+		}
+	}
+}
