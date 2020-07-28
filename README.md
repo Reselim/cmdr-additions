@@ -125,6 +125,11 @@ Kills players by running BreakJoints on their character.
 Arguments:
 - `players` Players — The players to kill
 
+### Uptime
+`uptime`
+
+Shows how long the server has been up for.
+
 # Contributing
 
 cmdr-additions requires [Rojo](https://github.com/roblox/rojo) 0.6.0 or above to sync properly. Once you have that installed, run:
