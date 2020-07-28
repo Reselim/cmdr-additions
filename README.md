@@ -130,6 +130,30 @@ Arguments:
 
 Shows how long the server has been up for.
 
+### Sit
+`sit`
+
+Makes a player sit.
+
+Arguments:
+- `players` Players — The players to sit
+
+### Stun
+`stun`, `platformstand`
+
+Stuns players by setting PlatformStand on their humanoids to true.
+
+Arguments:
+- `players` Players — The players to stun
+
+### Jump
+`jump`, `unstun`, `unplatformstand`
+
+Makes players jump; also sets PlatformStand to false.
+
+Arguments:
+- `players` Players — The players to make jump
+
 # Contributing
 
 cmdr-additions requires [Rojo](https://github.com/roblox/rojo) 0.6.0 or above to sync properly. Once you have that installed, run:
