@@ -85,6 +85,24 @@ Teleports players to you.
 Arguments:
 - `players` Players — The players to bring
 
+### SetWalkSpeed
+`setwalkspeed`, `walkspeed`, `ws`
+
+Updates the WalkSpeed property on players' humanoids.
+
+Arguments:
+- `players` Players — The players to update
+- `number` Walk speed — Maximum walking speed, measured in studs per second
+
+### SetJumpPower
+`setjumppower`, `jumppower`, `jp`
+
+Updates the JumpPower property on players' humanoids.
+
+Arguments:
+- `players` Players — The players to update
+- `number` Jump power
+
 ### Forcefield
 `forcefield`, `ff`
 
