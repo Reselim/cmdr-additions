@@ -15,7 +15,7 @@ function EventController:pushEvent(data)
 	self:setState(function(state)
 		local newState = {}
 
-		table.insert(newState, {
+		table.insert(newState, 1, {
 			Id = HttpService:GenerateGUID(false),
 			Active = true,
 			Data = data
