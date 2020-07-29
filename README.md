@@ -172,6 +172,15 @@ Makes players jump; also sets PlatformStand to false.
 Arguments:
 - `players` Players — The players to make jump
 
+### SetGravityModifier
+`setgravitymodifier`, `setgrav`, `grav`
+
+Sets characters' gravity compared to the global gravity.
+
+Arguments:
+- `players` Players — The players to change gravity for
+- `number` Gravity modifier — The ratio of character gravity to global gravity; 0 for no gravity, 1 for default
+
 # Contributing
 
 cmdr-additions requires [Rojo](https://github.com/roblox/rojo) 0.6.0 or above to sync properly. Once you have that installed, run:
