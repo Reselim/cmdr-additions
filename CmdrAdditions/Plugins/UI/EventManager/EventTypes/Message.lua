@@ -56,17 +56,21 @@ function MessageEvent:didMount()
 end
 
 function MessageEvent:close()
-	self.Motor:setGoal(
-		Otter.spring(0, {
-			frequency = 4,
-			dampingRatio = 0.75
-		})
-	)
+	if not self.IsClosing then
+		self.IsClosing = true
 
-	self.Motor:onComplete(function()
-		self.Motor:stop()
-		self.props.Destroy()
-	end)
+		self.Motor:setGoal(
+			Otter.spring(0, {
+				frequency = 4,
+				dampingRatio = 0.75
+			})
+		)
+
+		self.Motor:onComplete(function()
+			self.Motor:stop()
+			self.props.Destroy()
+		end)
+	end
 end
 
 function MessageEvent:didUpdate(lastProps)
