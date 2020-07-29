@@ -8,24 +8,24 @@ local MessageCommand = {
 	Args = {
 		{
 			Type = "string",
-			Name = "Message",
-			Description = "The message to show"
+			Name = "Content",
+			Description = "The content of the message to show"
 		}
 	}
 }
 
-function MessageCommand.RunServer(context, message)
-	local filterResult = TextService:FilterStringAsync(message, context.Executor.UserId, Enum.TextFilterContext.PublicChat)
+function MessageCommand.RunServer(context, content)
+	local filterResult = TextService:FilterStringAsync(content, context.Executor.UserId, Enum.TextFilterContext.PublicChat)
 	
 	local cmdrAdditions = context.Cmdr.CmdrAdditions
 	local permissionsPlugin = cmdrAdditions.Plugins.Permissions
 
 	for _, player in pairs(Players:GetChildren()) do
 		coroutine.wrap(function()
-			local filteredMessage = filterResult:GetNonChatStringForUserAsync(player.UserId)
+			local filteredContent = filterResult:GetNonChatStringForUserAsync(player.UserId)
 			
 			context:SendEvent(player, "ShowGlobalMessage", {
-				Content = filteredMessage,
+				Content = filteredContent,
 				Author = {
 					Player = context.Executor,
 					Role = permissionsPlugin:GetPlayerGroup(context.Executor)

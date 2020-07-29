@@ -50,7 +50,7 @@ Note: There are *plenty* more commands planned.
 Shows a message that covers all players' screens.
 
 Arguments:
-- `string` Message — The message to show
+- `string` Content — The content of the message to show
 
 ### Server message
 `servermessage`, `sm`
@@ -58,7 +58,7 @@ Arguments:
 Like the `message` command, but without author details.
 
 Arguments:
-- `string` Message — The message to show
+- `string` Content — The content of the message to show
 
 ### Teleport
 `teleport`, `tp`
