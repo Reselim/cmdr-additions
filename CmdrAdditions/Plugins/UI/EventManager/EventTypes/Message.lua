@@ -11,7 +11,6 @@ local RoactOtter = require(Packages.RoactOtter)
 local Utility =  require(Packages.Utility)
 
 local RadialProgress = require(Components.RadialProgress)
-local VectorClip = require(Components.VectorClip)
 
 local TEXT_MAX_WIDTH = 480
 local CONTENT_PADDING = Vector2.new(22, 19)
@@ -157,12 +156,17 @@ function MessageEvent:render()
 					LayoutOrder = 1,
 					BackgroundTransparency = 1
 				}, {
-					Image = Roact.createElement(VectorClip, {
+					Image = Roact.createElement("ImageLabel", {
 						Image = ("rbxthumb://type=AvatarHeadShot&id=%d&w=60&h=60"):format(data.Author.Player.UserId),
 						ImageTransparency = transparency,
-						Shape = "Circle",
 
-						Size = UDim2.new(1, 0, 1, 0)
+						Size = UDim2.new(1, 0, 1, 0),
+
+						BackgroundTransparency = 1
+					}, {
+						Corner = Roact.createElement("UICorner", {
+							CornerRadius = UDim.new(0.5, 0)
+						})
 					}),
 					
 					Background = Roact.createElement("ImageLabel", {
