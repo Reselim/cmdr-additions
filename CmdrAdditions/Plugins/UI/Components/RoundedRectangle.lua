@@ -76,7 +76,7 @@ function RoundedRectangle:render()
 		end
 	end
 
-	return Roact.createElement("ImageLabel", {
+	return Roact.createElement(self.props.Activated and "ImageButton" or "ImageLabel", {
 		Image = image,
 		ImageColor3 = self.props.Color,
 		ImageTransparency = self.props.Transparency,
@@ -94,7 +94,10 @@ function RoundedRectangle:render()
 
 		LayoutOrder = self.props.LayoutOrder,
 		ZIndex = self.props.ZIndex,
-		BackgroundTransparency = 1
+		BackgroundTransparency = 1,
+
+		AutoButtonColor = self.props.Activated and false or nil,
+		[Roact.Event.Activated] = self.props.Activated
 	}, self.props[Roact.Children])
 end
 
