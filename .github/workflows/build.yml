@@ -2,30 +2,30 @@ name: Build .rbxmx file
 on: push
 
 jobs:
-	build:
-		runs-on: ubuntu-latest
-		steps:
-			-
-				uses: actions/checkout@v2
-			-
-				name: Install rust
-				uses: actions-rs/toolchain@v1
-				with:
-					toolchain: stable
-			-
-				name: Install rojo
-				uses: actions-rs/cargo@v1
-				with:
-					command: install
-					args: rojo --version 6.0.0-rc1
-			-
-				name: Build
-				run: |
-					mkdir Build
-					rojo build -o Build/CmdrAdditions.rbxmx
-			-
-				name: Upload build
-				uses: actions/upload-artifact@v2
-				with:
-					name: Build
-					path: Build/*
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: actions/checkout@v2
+      -
+        name: Install rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      -
+        name: Install rojo
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: rojo --version 6.0.0-rc1
+      -
+        name: Build
+        run: |
+          mkdir Build
+          rojo build -o Build/CmdrAdditions.rbxmx
+      -
+        name: Upload build
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build
+          path: Build/*
