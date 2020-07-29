@@ -85,7 +85,7 @@ function MessageEvent:render()
 	local data = self.props.Data
 
 	local textBounds = TextService:GetTextSize(
-		data.Text, 26, Enum.Font.Gotham,
+		data.Content, 26, Enum.Font.Gotham,
 		Vector2.new(TEXT_MAX_WIDTH, math.huge)
 	)
 	local lineCount = textBounds.Y / 26
@@ -117,7 +117,7 @@ function MessageEvent:render()
 			BorderSizePixel = 0
 		}, {
 			Text = Roact.createElement("TextLabel", {
-				Text = data.Text,
+				Text = data.Content,
 				Font = Enum.Font.Gotham,
 				TextSize = 26,
 				LineHeight = 1.2,

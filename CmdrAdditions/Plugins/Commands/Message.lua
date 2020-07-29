@@ -25,7 +25,7 @@ function MessageCommand.RunServer(context, message)
 			local filteredMessage = filterResult:GetNonChatStringForUserAsync(player.UserId)
 			
 			context:SendEvent(player, "ShowGlobalMessage", {
-				Text = filteredMessage,
+				Content = filteredMessage,
 				Author = {
 					Player = context.Executor,
 					Role = permissionsPlugin:GetPlayerGroup(context.Executor)

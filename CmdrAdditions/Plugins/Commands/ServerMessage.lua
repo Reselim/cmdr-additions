@@ -22,7 +22,7 @@ function ServerMessageCommand.RunServer(context, message)
 			local filteredMessage = filterResult:GetNonChatStringForUserAsync(player.UserId)
 			
 			context:SendEvent(player, "ShowGlobalMessage", {
-				Text = filteredMessage
+				Content = filteredMessage
 			})
 		end)()
 	end
