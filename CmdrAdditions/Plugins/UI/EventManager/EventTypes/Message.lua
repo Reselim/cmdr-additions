@@ -11,6 +11,7 @@ local RoactOtter = require(Packages.RoactOtter)
 local Utility =  require(Packages.Utility)
 
 local RadialProgress = require(Components.RadialProgress)
+local RoundedRectangle = require(Components.RoundedRectangle)
 
 local TEXT_MAX_WIDTH = 480
 local CONTENT_PADDING = Vector2.new(22, 19)
@@ -106,15 +107,14 @@ function MessageEvent:render()
 		LayoutOrder = 1,
 		BorderSizePixel = 0
 	}, {
-		Content = Roact.createElement("Frame", {
-			BackgroundColor3 = Color3.new(0, 0, 0),
-			BackgroundTransparency = transparency:map(function(value)
+		Content = Roact.createElement(RoundedRectangle, {
+			Radius = 12,
+			Color = Color3.new(0, 0, 0),
+			Transparency = transparency:map(function(value)
 				return Utility.Math.Lerp(0.5, 1, value)
 			end),
 
-			Size = UDim2.new(0, TEXT_MAX_WIDTH + CONTENT_PADDING.X * 2, 0, textBounds.Y + CONTENT_PADDING.Y * 2),
-
-			BorderSizePixel = 0
+			Size = UDim2.new(0, TEXT_MAX_WIDTH + CONTENT_PADDING.X * 2, 0, textBounds.Y + CONTENT_PADDING.Y * 2)
 		}, {
 			Text = Roact.createElement("TextLabel", {
 				Text = data.Content,
@@ -129,10 +129,6 @@ function MessageEvent:render()
 				Size = UDim2.new(1, 0, 1, 0),
 
 				BackgroundTransparency = 1
-			}),
-
-			Corner = Roact.createElement("UICorner", {
-				CornerRadius = UDim.new(0, 12)
 			}),
 
 			Padding = Roact.createElement("UIPadding", {
