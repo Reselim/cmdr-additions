@@ -30,6 +30,10 @@ jobs:
           command: install
           args: rojo --version 6.0.0-rc.1
       -
+        name: Init submodules
+        uses: git-actions@v0.0.3
+        args: git submodule update --init --recursive
+      -
         name: Build
         run: |
           mkdir Build
