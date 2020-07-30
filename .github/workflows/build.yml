@@ -24,11 +24,11 @@ jobs:
       -
         name: Build
         run: |
-          mkdir Build
-          rojo build -o Build/CmdrAdditions.rbxmx
+          mkdir -p ~/build
+          rojo build -o ~/build/cmdr-additions.rbxmx
       -
         name: Upload build
         uses: actions/upload-artifact@v2
         with:
-          name: Build
-          path: Build/CmdrAdditions.rbxmx
+          name: cmdr-additions.zip
+          path: ~/build/cmdr-additions.rbxmx
