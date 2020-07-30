@@ -14,6 +14,9 @@ jobs:
         with:
           token: ${{ secrets.FOREMAN_TOKEN }}
       -
+        name: Initialize submodules
+        run: git submodule update --init --recursive
+      -
         name: Build
         run: |
           mkdir -p ~/build
