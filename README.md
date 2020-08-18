@@ -11,11 +11,54 @@ Forking this repository is encouraged if you wish to add any functionality that 
 - Modified functionality for certain commands
 - Translations to other languages
 
+## Features
+
+TODO
+
 ## Installation
 
 ### With Rojo
 
-TODO
+Add this repository as a submodule to your project. This assumes you wish to clone it into a `Packages` directory. Don't forget to initialize submodules!
+
+```
+git submodule add https://github.com/Reselim/cmdr-additions.git Packages/CmdrAdditions
+git submodule update --init --recursive
+```
+
+You can also clone it if you don't have a git repository set up in your project.
+
+```
+git clone https://github.com/Reselim/cmdr-additions.git Packages/CmdrAdditions
+cd Packages/CmdrAdditions
+git submodule init
+```
+
+#### 0.6+
+
+If you have the `Packages` directory already syncing in, you're good to go! cmdr-additions will be added as normal thanks to having a [project file](default.project.json) with no root.
+
+#### 0.5
+
+Add cmdr-additions as a synced in directory wherever you wish, and add a Folder object named "Packages" inside with all of the dependencies, according to the [project file](default.project.json).
+
+```json
+"CmdrAdditions": {
+	"$path": "Packages/CmdrAdditions",
+
+	"Packages": {
+		"$className": "Folder",
+
+		"Roact": { "$path": "Packages/Roact" },
+		"Flipper": { "$path": "Packages/Flipper" },
+		"RoactFlipper": { "$path": "Packages/RoactFlipper" },
+		"Promise": { "$path": "Packages/Promise/lib" },
+		"Util": { "$path": "Packages/Util" }
+	}
+}
+```
+
+You can supplement the paths of these dependencies with ones already in your Packages directory, but it's recommended to use the ones provided by cmdr-additions to make sure the version is compatible.
 
 ### Without Rojo
 
@@ -35,10 +78,6 @@ CmdrAdditions.new(config):Register(Cmdr)
 ## Configuration
 
 TODO (see [here](Demo/Config.lua) for an example)
-
-## Features
-
-TODO
 
 ## Commands
 
@@ -181,12 +220,16 @@ Arguments:
 - `players` Players — The players to change gravity for
 - `number` Gravity modifier — The ratio of character gravity to global gravity; 0 for no gravity, 1 for default
 
-# Contributing
+## Expanding cmdr-additions
+
+TODO
+
+## Contributing
 
 cmdr-additions requires [Rojo](https://github.com/roblox/rojo) 0.6.0 or above to sync properly. Once you have that installed, run:
 
 ```
-rojo serve demo.project.json
+rojo serve Demo
 ```
 
 Use the Roblox Studio plugin to sync into any place you wish (preferably an empty baseplate!) and you're good to go. Rojo will automatically keep any changes up to date, allowing you to play-test at any time.

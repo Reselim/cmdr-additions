@@ -5,4 +5,5 @@ local CmdrAdditions = require(ReplicatedStorage.CmdrAdditions)
 local Config = require(ReplicatedStorage.Config)
 
 Cmdr:RegisterDefaultCommands()
-CmdrAdditions.new(Config):Register(Cmdr)
+
+CmdrAdditions.new(Config):SetCmdr(Cmdr)

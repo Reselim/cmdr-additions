@@ -7,3 +7,6 @@
 [submodule "Packages/Cmdr"]
 	path = Packages/Cmdr
 	url = https://github.com/evaera/Cmdr
+[submodule "Packages/Flipper"]
+	path = Packages/Flipper
+	url = https://github.com/Reselim/Flipper

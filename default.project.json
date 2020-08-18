@@ -7,10 +7,10 @@
 			"$className": "Folder",
 
 			"Roact": { "$path": "Packages/Roact" },
-			"Otter": { "$path": "Packages/Otter" },
-			"RoactOtter": { "$path": "Packages/RoactOtter" },
+			"Flipper": { "$path": "Packages/Flipper" },
+			"RoactFlipper": { "$path": "Packages/RoactFlipper" },
 			"Promise": { "$path": "Packages/Promise/lib" },
-			"Utility": { "$path": "Packages/Utility" }
+			"Util": { "$path": "Packages/Util" }
 		}
 	}
 }
