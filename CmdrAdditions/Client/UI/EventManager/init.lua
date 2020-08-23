@@ -1,5 +1,7 @@
 local Packages = script:FindFirstAncestor("CmdrAdditions").Packages
+
 local Roact = require(Packages.Roact)
+local Util = require(Packages.Util)
 
 local EventController = require(script.EventController)
 local EventTypes = require(script.EventTypes)
@@ -10,12 +12,11 @@ function EventManager:render()
 	local eventControllers = {}
 
 	for eventType, component in pairs(EventTypes) do
-		eventControllers[eventType] = Roact.createElement(EventController, {
+		eventControllers[eventType] = Roact.createElement(EventController, Util.Dictionary.Merge(self.props, {
 			Component = component,
 			ListenTo = component.listenTo,
-			MaxQuantity = component.maxQuantity,
-			Cmdr = self.props.Cmdr
-		})
+			MaxQuantity = component.maxQuantity
+		}))
 	end
 
 	return Roact.createFragment(eventControllers)

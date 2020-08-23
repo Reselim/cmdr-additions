@@ -10,6 +10,7 @@ local Base = require(Shared.Base)
 local Permissions = require(script.Permissions)
 local Network = require(script.Network)
 local UI = require(script.UI)
+local Streams = require(script.Streams)
 
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:FindFirstChildOfClass("PlayerGui")
@@ -22,6 +23,7 @@ function CmdrAdditionsClient.new(...)
 
 	self.Network = Network.new(self)
 	self.Permissions = Permissions.new(self)
+	self.Streams = Streams.new(self)
 
 	return self
 end
@@ -41,7 +43,8 @@ function CmdrAdditionsClient:SetCmdr(cmdr)
 
 	-- Mount UI
 	local element = Roact.createElement(UI, {
-		Cmdr = cmdr
+		Cmdr = cmdr,
+		CmdrAdditions = self
 	})
 	self._uiHandle = Roact.mount(element, PlayerGui, "UI")
 end

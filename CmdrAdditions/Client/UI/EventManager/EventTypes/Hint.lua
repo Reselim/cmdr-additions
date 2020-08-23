@@ -30,8 +30,6 @@ function Hint:init()
 end
 
 function Hint:didMount()
-	self.Motor:start()
-
 	self.Motor:setGoal({
 		Index = Flipper.Spring.new(self.props.Index, MOUNT_SPRING),
 		Opacity = Flipper.Spring.new(1, MOUNT_SPRING)
@@ -63,10 +61,6 @@ function Hint:didUpdate(lastProps)
 	if self.props.Active ~= lastProps.Active and not self.props.Active then
 		self:close()
 	end
-end
-
-function Hint:willUnmount()
-	self.Motor:destroy()
 end
 
 function Hint:render()

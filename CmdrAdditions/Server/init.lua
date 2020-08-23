@@ -1,8 +1,10 @@
 local Shared = script:FindFirstAncestor("CmdrAdditions").Shared
 
 local Base = require(Shared.Base)
-local Permissions = require(script.Permissions)
+
 local Network = require(script.Network)
+local Permissions = require(script.Permissions)
+local Streams = require(script.Streams)
 
 local CmdrAdditionsServer = setmetatable({}, Base)
 CmdrAdditionsServer.__index = CmdrAdditionsServer
@@ -12,6 +14,7 @@ function CmdrAdditionsServer.new(...)
 
 	self.Network = Network.new(self)
 	self.Permissions = Permissions.new(self)
+	self.Streams = Streams.new(self)
 
 	return self
 end
@@ -27,6 +30,23 @@ function CmdrAdditionsServer:SetCmdr(cmdr)
 			warn(("[cmdr-additions] %s somehow got past client-side validation for running commands!"):format(context.Executor.Name))
 			return false
 		end
+	end)
+
+	-- Register log stream
+	local logStream = self.Streams:GetStream("CommandLogs")
+	
+	logStream:AddRestrictor(function(player)
+		return true--self.Permissions:CanPlayerRunCommand(player, "CommandLogs")
+	end)
+
+	cmdr.Registry:RegisterHook("AfterRun", function(context)
+		local executor = context.Executor
+
+		logStream:Push({
+			Time = os.time(),
+			Player = { Name = executor.Name, UserId = executor.UserId },
+			Text = context.RawText
+		})
 	end)
 end
 

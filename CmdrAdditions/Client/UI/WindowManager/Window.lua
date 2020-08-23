@@ -1,7 +1,6 @@
 local Workspace = game:GetService("Workspace")
 
-local Root = script:FindFirstAncestor("CmdrAdditions")
-local Packages = Root.Packages
+local Packages = script:FindFirstAncestor("CmdrAdditions").Packages
 local Components = script:FindFirstAncestor("UI").Components
 
 local Roact = require(Packages.Roact)
@@ -26,7 +25,6 @@ function Window:init()
 end
 
 function Window:didMount()
-	self.Motor:start()
 	self.Motor:setGoal(
 		Flipper.Spring.new(1, {
 			frequency = 5,
@@ -51,7 +49,9 @@ function Window:close()
 end
 
 function Window:willUnmount()
-	self.Motor:destroy()
+	if self.Listener then
+		self.Listener:Disconnect()
+	end
 end
 
 function Window:render()
@@ -98,8 +98,8 @@ function Window:render()
 			BackgroundTransparency = 1
 		}, {
 			Element = Roact.createElement(ContentTypes[self.props.Type], {
-				Transparency = transparency
-				-- TODO: Connect to stream to fetch data
+				Transparency = transparency,
+				Stream = self.props.CmdrAdditions.Streams:GetStream(self.props.Stream)
 			})
 		})
 	})

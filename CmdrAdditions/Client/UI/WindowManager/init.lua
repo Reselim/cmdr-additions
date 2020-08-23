@@ -15,8 +15,8 @@ function WindowManager:init()
 	--[[self:spawnWindow({
 		Title = "Example window",
 		Type = "Logs",
-		Icon = "ChatLogs",
-		Stream = "ChatLogs"
+		Icon = "CommandLogs",
+		Stream = "CommandLogs"
 	})]]
 end
 
@@ -32,7 +32,7 @@ function WindowManager:render()
 	local windows = {}
 
 	for windowId, data in pairs(self.state) do
-		windows[windowId] = Roact.createElement(Window, Util.Dictionary.Merge(data, {
+		windows[windowId] = Roact.createElement(Window, Util.Dictionary.Merge(self.props, data, {
 			InitialSize = DEFAULT_SIZE,
 			Destroy = function()
 				self:setState({

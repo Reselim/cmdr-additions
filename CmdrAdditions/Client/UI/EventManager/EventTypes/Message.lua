@@ -34,7 +34,6 @@ function MessageEvent:init()
 end
 
 function MessageEvent:didMount()
-	self.Motor:start()
 	self.Motor:setGoal(
 		Flipper.Spring.new(1, {
 			frequency = 6,
@@ -77,7 +76,6 @@ function MessageEvent:didUpdate(lastProps)
 end
 
 function MessageEvent:willUnmount()
-	self.Motor:destroy()
 	if self.RenderListener then
 		self.RenderListener:Disconnect()
 	end
