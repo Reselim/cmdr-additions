@@ -10,3 +10,6 @@
 [submodule "Packages/Flipper"]
 	path = Packages/Flipper
 	url = https://github.com/Reselim/Flipper
+[submodule "Packages/RoactFlipper"]
+	path = Packages/RoactFlipper
+	url = https://github.com/Reselim/roact-flipper
