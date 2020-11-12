@@ -18,7 +18,7 @@ function NetworkClient.new(cmdrAdditions)
 	}, NetworkClient)
 
 	self._remoteEvent.OnClientEvent:Connect(function(eventName, ...)
-		self:_getEvent(eventName):Fire(...)
+		self:_getEvent(eventName):fire(...)
 	end)
 
 	return self
@@ -36,7 +36,7 @@ function NetworkClient:_getEvent(eventName)
 end
 
 function NetworkClient:HandleEvent(eventName, handler)
-	return self:_getEvent(eventName):Connect(handler)
+	return self:_getEvent(eventName):connect(handler)
 end
 
 function NetworkClient:Request(handlerName, ...)

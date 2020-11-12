@@ -32,7 +32,7 @@ function WindowManager:render()
 	local windows = {}
 
 	for windowId, data in pairs(self.state) do
-		windows[windowId] = Roact.createElement(Window, Util.Dictionary.Merge(self.props, data, {
+		windows[windowId] = Roact.createElement(Window, Util.Dictionary.merge(self.props, data, {
 			InitialSize = DEFAULT_SIZE,
 			Destroy = function()
 				self:setState({

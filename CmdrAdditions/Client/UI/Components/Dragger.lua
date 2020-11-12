@@ -26,7 +26,7 @@ function Dragger:handleInput(input)
 		end
 		
 		if isMouse then
-			maid:GiveTasks({
+			maid:giveTasks({
 				UserInputService.InputChanged:Connect(function(input)
 					if input.UserInputType == Enum.UserInputType.MouseMovement then
 						updatePosition(input.Position)
@@ -35,13 +35,13 @@ function Dragger:handleInput(input)
 
 				UserInputService.InputEnded:Connect(function(input)
 					if input == self.CurrentInput then
-						maid:Clean()
+						maid:clean()
 						self.CurrentInput = nil
 					end
 				end)
 			})
 		elseif isTouch then
-			maid:GiveTasks({
+			maid:giveTasks({
 				input:GetPropertyChangedSignal("Position"):Connect(function()
 					updatePosition(input.Position)
 				end),
@@ -53,7 +53,7 @@ function Dragger:handleInput(input)
 						userInputState == Enum.UserInputState.End
 						or userInputState == Enum.UserInputState.Cancel
 					then
-						maid:Clean()
+						maid:clean()
 						self.CurrentInput = nil
 					end
 				end)

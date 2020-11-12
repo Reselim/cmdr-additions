@@ -12,7 +12,7 @@ function EventManager:render()
 	local eventControllers = {}
 
 	for eventType, component in pairs(EventTypes) do
-		eventControllers[eventType] = Roact.createElement(EventController, Util.Dictionary.Merge(self.props, {
+		eventControllers[eventType] = Roact.createElement(EventController, Util.Dictionary.merge(self.props, {
 			Component = component,
 			ListenTo = component.listenTo,
 			MaxQuantity = component.maxQuantity

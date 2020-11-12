@@ -3,19 +3,19 @@ Connection.__index = Connection
 
 function Connection.new(event, handler)
 	return setmetatable({
-		Event = event,
-		Connected = true,
+		event = event,
+		connected = true,
 		_handler = handler
 	}, Connection)
 end
 
-function Connection:Disconnect()
-	if self.Connected then
-		self.Connected = false
+function Connection:disconnect()
+	if self.connected then
+		self.connected = false
 
-		for index, connection in pairs(self.Event._connections) do
+		for index, connection in pairs(self.event._connections) do
 			if connection == self then
-				table.remove(self.Event._connections, index)
+				table.remove(self.event._connections, index)
 				return
 			end
 		end
@@ -32,7 +32,7 @@ function Event.new()
 	}, Event)
 end
 
-function Event:Fire(...)
+function Event:fire(...)
 	for _, connection in pairs(self._connections) do
 		connection._handler(...)
 	end
@@ -44,13 +44,13 @@ function Event:Fire(...)
 	self._threads = {}
 end
 
-function Event:Connect(handler)
+function Event:connect(handler)
 	local connection = Connection.new(self, handler)
 	table.insert(self._connections, connection)
 	return connection
 end
 
-function Event:Wait()
+function Event:wait()
 	table.insert(self._threads, coroutine.running())
 	return coroutine.yield()
 end

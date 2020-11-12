@@ -63,7 +63,7 @@ function Window:render()
 		Radius = 8,
 		Color = Color3.new(0, 0, 0),
 		Transparency = transparency:map(function(value)
-			return Util.Math.Lerp(0.5, 1, value)
+			return Util.Math.lerp(0.5, 1, value)
 		end),
 
 		Size = self.Size:map(function(value)

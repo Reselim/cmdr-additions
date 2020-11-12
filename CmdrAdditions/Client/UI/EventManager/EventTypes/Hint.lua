@@ -94,7 +94,7 @@ function Hint:render()
 		Radius = 8,
 		Color = Color3.new(0, 0, 0),
 		Transparency = transparency:map(function(value)
-			return Util.Math.Lerp(0.5, 1, value)
+			return Util.Math.lerp(0.5, 1, value)
 		end),
 
 		Size = self.ContentSize:map(function(value)
@@ -116,7 +116,7 @@ function Hint:render()
 
 			Color = Color3.new(0, 0, 0),
 			Transparency = transparency:map(function(value)
-				return Util.Math.Lerp(0.5, 1, value)
+				return Util.Math.lerp(0.5, 1, value)
 			end),
 
 			Size = UDim2.new(0, 16 + authorTextBounds.X + 16, 1, 0),

@@ -2,7 +2,7 @@ local Array = {}
 
 --- Creates an array from a dictionary
 -- @param dictionary Dictionary to turn into an array
-function Array.From(dictionary)
+function Array.from(dictionary)
 	local newArray = {}
 
 	for _, value in pairs(dictionary) do
@@ -15,7 +15,7 @@ end
 --- Searches through an array using a callback function
 -- @param array Array to search
 -- @param callback(value,index,array) Function called on every array element
-function Array.Find(array, callback)
+function Array.find(array, callback)
 	for index, value in ipairs(array) do
 		if callback(value, index, array) then
 			return value, index
@@ -26,7 +26,7 @@ end
 --- Creates a new array using callback as a filter function
 -- @param array Array to filter
 -- @param callback(value, index, array) Function called on every array element
-function Array.Filter(array, callback)
+function Array.filter(array, callback)
 	local newArray = {}
 
 	for index, value in ipairs(array) do
@@ -41,7 +41,7 @@ end
 --- Creates a new array with all sub-array elements concatenated into it recursively up to the specified depth
 -- @param array Array to flatten
 -- @param depth Depth level specifying how deep a nested array structure should be flattened
-function Array.Flatten(array, depth)
+function Array.flatten(array, depth)
 	depth = (depth or 1) - 1
 
 	local newArray = {}
@@ -66,7 +66,7 @@ end
 --- Calls a function for each element in an array, and replaces that element with the return value from the callback
 -- @param array Array to map
 -- @param callback(value,index,array) Function called on every array element
-function Array.Map(array, callback)
+function Array.map(array, callback)
 	local newArray = {}
 
 	for index, value in ipairs(array) do
@@ -79,7 +79,7 @@ end
 --- Reverses an array
 -- @param array Array to reverse
 -- @return A reversed copy of the array
-function Array.Reverse(array)
+function Array.reverse(array)
 	local newArray = {}
 
 	for index, value in ipairs(array) do
@@ -93,7 +93,7 @@ end
 -- @param array Array to sample from
 -- @param rangeStart Start of slice range
 -- @param rangeEnd End of slice range
-function Array.Slice(array, rangeStart, rangeEnd)
+function Array.slice(array, rangeStart, rangeEnd)
 	local newArray = {}
 
 	for index = rangeStart, rangeEnd do
@@ -107,7 +107,7 @@ end
 -- @param array Array to sample from
 -- @param rangeStart Start of slice range
 -- @param rangeEnd End of slice range
-function Array.FastSlice(array, rangeStart, rangeEnd)
+function Array.fastSlice(array, rangeStart, rangeEnd)
 	return { unpack(array, rangeStart, rangeEnd - 1) }
 end
 

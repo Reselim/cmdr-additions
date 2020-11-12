@@ -46,7 +46,7 @@ function Stream:RemoveSubscriber(player)
 end
 
 function Stream:Push(event)
-	self.Event:Fire(event)
+	self.Event:fire(event)
 
 	table.insert(self.History, event)
 	

@@ -44,7 +44,7 @@ function StreamsServer:GetStream(streamName)
 	if not stream then
 		stream = Stream.new(streamName)
 
-		stream.Event:Connect(function(event)
+		stream.Event:connect(function(event)
 			for _, subscriber in pairs(stream.Subscribers) do
 				self.CmdrAdditions.Network:SendEvent(subscriber, "StreamEvent", streamName, event)
 			end

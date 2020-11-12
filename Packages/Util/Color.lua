@@ -1,13 +1,13 @@
 local Color = {}
 
-function Color.GetRelativeLuminance(color3)
+function Color.getRelativeLuminance(color3)
 	return
 		color3.r * 0.2126 +
 		color3.g * 0.7152 +
 		color3.b * 0.0722
 end
 
-function Color.ToHex(color3)
+function Color.toHex(color3)
 	local R = color3.r * 255
 	local G = color3.g * 255
 	local B = color3.b * 255
@@ -15,7 +15,7 @@ function Color.ToHex(color3)
 	return ("%.2x%.2x%.2x"):format(R, G, B)
 end
 
-function Color.FromHex(hex)
+function Color.fromHex(hex)
 	hex = hex:gsub("^#", "")
 
 	local R, G, B = hex:match("(%x%x)(%x%x)(%x%x)")

@@ -44,7 +44,7 @@ function WindowNavbar:render()
 		Edge = "Top",
 		Color = Color3.new(0, 0, 0),
 		Transparency = transparency:map(function(value)
-			return Util.Math.Lerp(0.5, 1, value)
+			return Util.Math.lerp(0.5, 1, value)
 		end),
 
 		Size = UDim2.new(1, 0, 0, 34),
@@ -102,7 +102,7 @@ function WindowNavbar:render()
 		Icon = Roact.createElement("ImageLabel", {
 			Image = ICONS[self.props.Icon],
 			ImageTransparency = transparency:map(function(value)
-				return Util.Math.Lerp(0.85, 1, value)
+				return Util.Math.lerp(0.85, 1, value)
 			end),
 
 			Size = UDim2.new(0, 48, 0, 48),

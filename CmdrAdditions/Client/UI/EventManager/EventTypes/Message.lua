@@ -98,7 +98,7 @@ function MessageEvent:render()
 	return Roact.createElement("Frame", {
 		BackgroundColor3 = Color3.new(0, 0, 0),
 		BackgroundTransparency = transparency:map(function(value)
-			return Utility.Math.Lerp(0.5, 1, value)
+			return Utility.Math.lerp(0.5, 1, value)
 		end),
 
 		Size = UDim2.new(1, 0, 1, 0),
@@ -110,7 +110,7 @@ function MessageEvent:render()
 			Radius = 12,
 			Color = Color3.new(0, 0, 0),
 			Transparency = transparency:map(function(value)
-				return Utility.Math.Lerp(0.5, 1, value)
+				return Utility.Math.lerp(0.5, 1, value)
 			end),
 
 			Size = UDim2.new(0, TEXT_MAX_WIDTH + CONTENT_PADDING.X * 2, 0, textBounds.Y + CONTENT_PADDING.Y * 2)
@@ -168,7 +168,7 @@ function MessageEvent:render()
 						Image = "rbxassetid://2600845734",
 						ImageColor3 = Color3.new(0, 0, 0),
 						ImageTransparency = transparency:map(function(value)
-							return Utility.Math.Lerp(0.7, 1, value)
+							return Utility.Math.lerp(0.7, 1, value)
 						end),
 
 						Size = UDim2.new(1, 0, 1, 0),
@@ -264,7 +264,7 @@ function MessageEvent:render()
 				Background = Roact.createElement("ImageLabel", {
 					Image = "rbxassetid://5409990484",
 					ImageTransparency = transparency:map(function(value)
-						return Utility.Math.Lerp(0.7, 1, value)
+						return Utility.Math.lerp(0.7, 1, value)
 					end),
 
 					Size = UDim2.new(1, 0, 1, 0),
@@ -280,7 +280,7 @@ function MessageEvent:render()
 		}, {
 			Blur = Roact.createElement("BlurEffect", {
 				Size = RoactFlipper.getBinding(self.Motor):map(function(value)
-					return Utility.Math.Lerp(0, 24, value)
+					return Utility.Math.lerp(0, 24, value)
 				end)
 			})
 		}),
