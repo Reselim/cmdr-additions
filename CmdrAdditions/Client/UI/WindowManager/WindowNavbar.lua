@@ -17,7 +17,9 @@ local function WindowNavbarButton(props)
 		Size = UDim2.new(0, 18, 1, 0),
 
 		LayoutOrder = -props.Index,
-		BackgroundTransparency = 1
+		BackgroundTransparency = 1,
+
+		[Roact.Event.Activated] = props.Activated
 	}, {
 		Circle = Roact.createElement("ImageLabel", {
 			Image = "rbxassetid://3088713341",
