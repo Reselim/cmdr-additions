@@ -1,12 +1,15 @@
 local Workspace = game:GetService("Workspace")
 
 local Packages = script:FindFirstAncestor("CmdrAdditions").Packages
-local Components = script:FindFirstAncestor("UI").Components
+local UI = script:FindFirstAncestor("UI")
+local Components = UI.Components
 
 local Roact = require(Packages.Roact)
 local Flipper = require(Packages.Flipper)
 local RoactFlipper = require(Packages.RoactFlipper)
 local Util = require(Packages.Util)
+
+local CmdrContext = require(UI.CmdrContext)
 
 local RoundedRectangle = require(Components.RoundedRectangle)
 
@@ -55,53 +58,57 @@ function Window:willUnmount()
 end
 
 function Window:render()
-	local transparency = RoactFlipper.getBinding(self.Motor):map(function(value)
-		return 1 - value
-	end)
-
-	return Roact.createElement(RoundedRectangle, {
-		Radius = 8,
-		Color = Color3.new(0, 0, 0),
-		Transparency = transparency:map(function(value)
-			return Util.Math.lerp(0.5, 1, value)
-		end),
-
-		Size = self.Size:map(function(value)
-			return UDim2.new(0, value.X, 0, value.Y)
-		end),
-		Position = self.Position:map(function(value)
-			return UDim2.new(0, value.X, 0, value.Y)
-		end),
-
-		Active = true
-	}, {
-		Navbar = Roact.createElement(WindowNavbar, {
-			Title = self.props.Title,
-			Icon = self.props.Icon,
-			Transparency = transparency,
-
-			Move = function(offset)
-				self.SetPosition(self.Position:getValue() + offset)
-			end,
-
-			Close = function()
-				self:close()
-			end
-		}),
-
-		Content = Roact.createElement("Frame", {
-			Size = UDim2.new(1, 0, 1, -34),
-			Position = UDim2.new(0, 0, 1, 0),
-			AnchorPoint = Vector2.new(0, 1),
-
-			ClipsDescendants = true,
-			BackgroundTransparency = 1
-		}, {
-			Element = Roact.createElement(ContentTypes[self.props.Type], {
-				Transparency = transparency,
-				Stream = self.props.CmdrAdditions.Streams:GetStream(self.props.Stream)
+	return Roact.createElement(CmdrContext.Consumer, {
+		render = function(cmdr)
+			local transparency = RoactFlipper.getBinding(self.Motor):map(function(value)
+				return 1 - value
+			end)
+		
+			return Roact.createElement(RoundedRectangle, {
+				Radius = 8,
+				Color = Color3.new(0, 0, 0),
+				Transparency = transparency:map(function(value)
+					return Util.Math.lerp(0.5, 1, value)
+				end),
+		
+				Size = self.Size:map(function(value)
+					return UDim2.new(0, value.X, 0, value.Y)
+				end),
+				Position = self.Position:map(function(value)
+					return UDim2.new(0, value.X, 0, value.Y)
+				end),
+		
+				Active = true
+			}, {
+				Navbar = Roact.createElement(WindowNavbar, {
+					Title = self.props.Title,
+					Icon = self.props.Icon,
+					Transparency = transparency,
+		
+					Move = function(offset)
+						self.SetPosition(self.Position:getValue() + offset)
+					end,
+		
+					Close = function()
+						self:close()
+					end
+				}),
+		
+				Content = Roact.createElement("Frame", {
+					Size = UDim2.new(1, 0, 1, -34),
+					Position = UDim2.new(0, 0, 1, 0),
+					AnchorPoint = Vector2.new(0, 1),
+		
+					ClipsDescendants = true,
+					BackgroundTransparency = 1
+				}, {
+					Element = Roact.createElement(ContentTypes[self.props.Type], {
+						Transparency = transparency,
+						Stream = cmdr.CmdrAdditions.Streams:GetStream(self.props.Stream)
+					})
+				})
 			})
-		})
+		end
 	})
 end
 

@@ -2,6 +2,8 @@ local Packages = script:FindFirstAncestor("CmdrAdditions").Packages
 
 local Roact = require(Packages.Roact)
 
+local CmdrContext = require(script.CmdrContext)
+
 local EventManager = require(script.EventManager)
 local WindowManager = require(script.WindowManager)
 
@@ -14,8 +16,12 @@ function UI:render()
 		IgnoreGuiInset = true,
 		DisplayOrder = 1000 - 1 -- Cmdr display order is 1000
 	}, {
-		EventManager = Roact.createElement(EventManager, self.props),
-		WindowManager = Roact.createElement(WindowManager, self.props)
+		Roact.createElement(CmdrContext.Provider, {
+			value = self.props.Cmdr
+		}, {
+			EventManager = Roact.createElement(EventManager),
+			WindowManager = Roact.createElement(WindowManager)
+		})
 	})
 end
 
