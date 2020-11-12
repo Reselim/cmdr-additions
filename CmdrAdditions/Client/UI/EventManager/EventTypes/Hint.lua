@@ -7,12 +7,14 @@ local Roact = require(Packages.Roact)
 local Flipper = require(Packages.Flipper)
 local RoactFlipper = require(Packages.RoactFlipper)
 local Util = require(Packages.Util)
+local Promise = require(Packages.Promise)
 
 local RoundedRectangle = require(Components.RoundedRectangle)
 
 local OFFSET = 6
 local SPACING = 4
 local HEIGHT = 32
+local DURATION = 4
 
 local MOUNT_SPRING = {
 	frequency = 4,
@@ -34,10 +36,18 @@ function Hint:didMount()
 		Index = Flipper.Spring.new(self.props.Index, MOUNT_SPRING),
 		Opacity = Flipper.Spring.new(1, MOUNT_SPRING)
 	})
+
+	self.Timer = Promise.delay(DURATION):andThen(function()
+		self:close()
+	end)
 end
 
 function Hint:close()
-	if not self.IsClosing then
+	if self.props.Active and not self.IsClosing then
+		if self.Timer then
+			self.Timer:cancel()
+		end
+
 		self.IsClosing = true
 
 		self.Motor:setGoal({
